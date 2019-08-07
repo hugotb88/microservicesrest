@@ -3,8 +3,11 @@ package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
 import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -31,8 +34,13 @@ public class UserController {
 
     //Add User
     @PostMapping("/users")
-    public void createUser(@RequestBody User user){
+    public ResponseEntity<Object> createUser(@RequestBody User user){
         userDaoService.save(user);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(user.getId()).toUri(); //Appends in the URI the id of the new User
+        return ResponseEntity.created(location).build();
     }
 
 
