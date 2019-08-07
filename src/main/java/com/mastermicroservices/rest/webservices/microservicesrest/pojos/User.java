@@ -11,14 +11,17 @@ public class User {
     //Attributes
     private Integer id;
     private String name;
-    private LocalDate date;
+    private LocalDate birthDate;
 
 
-    //Contructor
-    public User(Integer id, String name, LocalDate date) {
+    //Contructors
+    protected User(){}
+
+    public User(Integer id, String name, LocalDate birthDate) {
+        super();
         this.id = id;
         this.name = name;
-        this.date = date;
+        this.birthDate = birthDate;
     }
 
     public Integer getId() {
@@ -29,8 +32,8 @@ public class User {
         return name;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public void setId(Integer id) {
@@ -41,7 +44,7 @@ public class User {
         this.name = name;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }
