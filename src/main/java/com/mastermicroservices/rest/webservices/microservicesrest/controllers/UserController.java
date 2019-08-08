@@ -1,5 +1,6 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 
+import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserNotFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
 import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,11 @@ public class UserController {
 
     //Gets a single User
     @GetMapping("/users/{id}")
-    public User retrieveAllUsers(@PathVariable Integer id){
-        return userDaoService.findOne(id);
+    public User retrieveUser(@PathVariable Integer id){
+        User user = userDaoService.findOne(id);
+        if (user == null)
+            throw new UserNotFoundException("id" + id);
+        return user;
     }
 
     //Add User
