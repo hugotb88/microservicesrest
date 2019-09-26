@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * This class will handle the exceptions and will give them the right format
  * Applies to all Controllers
  */
-@ControllerAdvice //Shares in all Controllersx
+@ControllerAdvice //Shares in all Controllers
 @RestController
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -29,12 +29,27 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
 
     //Overrides this method
-    @ExceptionHandler(UserNotFoundException.class) //Specify which Exception we want to handle, this case is for all
     public final ResponseEntity<Object> handleUserNotFoundExceptions(UserNotFoundException ex, WebRequest request){
         ExceptionResponse er =
         new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
 
         return new ResponseEntity(er, HttpStatus.NOT_FOUND);
+    }
+
+    //Overrides this method
+    public final ResponseEntity<Object> handleNoUsersFoundException(NoUsersFoundException ex, WebRequest request){
+        ExceptionResponse er =
+                new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(er, HttpStatus.NO_CONTENT);
+    }
+
+    //Overrides this method
+    public final ResponseEntity<Object> handleUserSaveException(UserSaveException ex, WebRequest request){
+        ExceptionResponse er =
+                new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(er, HttpStatus.METHOD_FAILURE);
     }
 }
 

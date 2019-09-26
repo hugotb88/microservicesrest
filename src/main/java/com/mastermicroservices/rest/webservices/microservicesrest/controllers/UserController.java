@@ -1,6 +1,8 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 
+import com.mastermicroservices.rest.webservices.microservicesrest.exception.NoUsersFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserNotFoundException;
+import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserSaveException;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
 import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,10 @@ public class UserController {
     //Gets all Users
     @GetMapping("/users")
     public List<User> retrieveAllUsers(){
-        return userDaoService.findAll();
+        List<User> result = userDaoService.findAll();
+        if(result == null)
+            throw new NoUsersFoundException("No users registered yet");
+        return result;
     }
 
     //Gets a single User
@@ -39,7 +44,9 @@ public class UserController {
     //Add User
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user){
-        userDaoService.save(user);
+        User result = userDaoService.save(user);
+        if (result == null)
+            throw new UserSaveException("User not saved:" + user.getName());
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
