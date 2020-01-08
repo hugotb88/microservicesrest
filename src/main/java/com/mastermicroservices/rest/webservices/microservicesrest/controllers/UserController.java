@@ -1,11 +1,14 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 
+import static org.springframework.hateoas.server.mvc.ControllerLinkBuilder.*;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.NoUsersFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserNotFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserSaveException;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
 import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,14 +38,22 @@ public class UserController {
 
     //Gets a single User
     @GetMapping("/users/{id}")
-    public User retrieveUser(@PathVariable Integer id){
+    public EntityModel<User> retrieveUser(@PathVariable Integer id){
         User user = userDaoService.findOne(id);
         if (user == null)
             throw new UserNotFoundException("id" + id);
-        return user;
+
+        //"all-users", SERVER_PATH + "/users"
+        //HATEOAS
+        //retrieveAllUsers
+        EntityModel<User> resource = new EntityModel<>(user);
+        ControllerLinkBuilder linkToAllUsers = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+        resource.add(linkToAllUsers.withRel("all-users"));
+
+        return resource;
     }
 
-    //Add User
+    //Create User
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@Valid
                                              @RequestBody User user){
