@@ -16,3 +16,17 @@ Differences
 - Handle Resources
 - HATEOAS (Hypermedia as the Engine of Application State)
 - Internationalization i18n
+
+
+HATEOAS
+- Adding links to the response of a service to let the user which other action he can perform
+  {
+      "id": 1,
+      "name": "Batman",
+      "birthDate": "2021-10-11",
+      "_links": {
+      "all-users": {
+        "href": "http://localhost:8080/users"
+        }
+      }
+  }
