@@ -36,6 +36,7 @@ public class UserController {
         if(result == null)
             throw new NoUsersFoundException("No users registered yet");
         return result;
+        //Content-Negotiation in Postman, Header= Accept, Value= application/xml
     }
 
     //Gets a single User
