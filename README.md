@@ -48,3 +48,8 @@ HAL Explorer (JSON Hypertext Application Language)
 - An easy way to hyperlink between resources in our API
 - Provides an in-browser GUI to traverse the REST API
 - localhost:8080
+
+REST API Filtering
+- A way to filter the data that you sent in the response without modifying the Bean, only filtering the Response
+- @JsonIgnore
+- @JsonIgnoreProperties --> Static Filtering
