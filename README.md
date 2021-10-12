@@ -35,3 +35,11 @@ Swagger using Springdoc OpenAPI 1.5.9
 - OpenAPI = Specification
 - Swagger = Tools for implementing the specification
 - localhost:8080/swagger-ui.html
+
+
+Spring Boot Actuator
+- Monitoring the Application
+- Health of the application
+  localhost:8080/actuator
+
+**JSON formatter extension in Chrome can help to read better the information of the Actuator 
