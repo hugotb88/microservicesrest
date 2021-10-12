@@ -30,3 +30,8 @@ HATEOAS
         }
       }
   }
+  
+Swagger using Springdoc OpenAPI 1.5.9
+- OpenAPI = Specification
+- Swagger = Tools for implementing the specification
+- localhost:8080/swagger-ui.html
