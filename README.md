@@ -53,3 +53,6 @@ REST API Filtering
 - A way to filter the data that you sent in the response without modifying the Bean, only filtering the Response
 - @JsonIgnore
 - @JsonIgnoreProperties --> Static Filtering
+
+Dynamic Filtering
+- @JsonFilter(<nameOfTheFilter>)

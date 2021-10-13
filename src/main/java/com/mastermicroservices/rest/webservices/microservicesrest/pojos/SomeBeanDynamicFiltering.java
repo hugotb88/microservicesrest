@@ -1,14 +1,13 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.pojos;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Victor Hugo Olvera Cruz
- * POJO SomeBean
+ * POJO SomeBeanDynamicFiltering
  */
 @JsonFilter("SomeBeanFilter")
-public class SomeBean {
+public class SomeBeanDynamicFiltering {
 
     //Attributes
     private String field1;
@@ -16,8 +15,7 @@ public class SomeBean {
     private String field3;
 
     //Constructor
-    public SomeBean(String field1, String field2, String field3) {
-        super();
+    public SomeBeanDynamicFiltering(String field1, String field2, String field3) {
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;
