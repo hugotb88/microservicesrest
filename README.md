@@ -75,3 +75,15 @@ Factors to choose Versioning
 - Caching
 - Can we Execute the request in the browser?
 - API Documentation
+
+
+Security with Spring Security (Basic Authentication, no OAuth or OAuth2)
+- Once the dependency is added and the app started, search in the Console the following "Using generated security password: <xxxx...>"
+- You will need the value in Postman to perform a Request, if you don't use it you will receive a HTTP 401 error
+- Basic Auth
+    - Username: user
+    - Password: <xxx...>
+- You can configure user and password in the .properties file
+    - spring.security.user.name = username
+    - spring.security.user.password = password
+    
