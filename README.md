@@ -61,3 +61,17 @@ Versioning
 - PersonV1
 - PersonV2
 - Name
+
+Versioning (Header and Content Negotiation Approach)
+- params
+- headers (Headers in request)
+- produces (Accept in headers)
+
+** Depends of the type of versioning if can be executed in Browser, or generate Documentation, do a research considering the following factors
+
+Factors to choose Versioning
+- URI pollution
+- Missuse of HTTP Headers
+- Caching
+- Can we Execute the request in the browser?
+- API Documentation
