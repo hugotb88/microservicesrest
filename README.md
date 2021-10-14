@@ -87,3 +87,12 @@ Security with Spring Security (Basic Authentication, no OAuth or OAuth2)
     - spring.security.user.name = username
     - spring.security.user.password = password
     
+JPA
+1) H2 database name is randomly generated each time you restart the server. You can find the database name and URL from the console log.
+
+2) To use data.sql, you need to add this to application.properties -  spring.jpa.defer-datasource-initialization=true
+
+e.g
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.jpa.defer-datasource-initialization=true
+    
