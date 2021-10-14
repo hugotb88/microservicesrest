@@ -56,3 +56,8 @@ REST API Filtering
 
 Dynamic Filtering
 - @JsonFilter(<nameOfTheFilter>)
+
+Versioning
+- PersonV1
+- PersonV2
+- Name
