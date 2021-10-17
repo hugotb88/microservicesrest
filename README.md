@@ -147,3 +147,12 @@ Best Practices in RESTful services design
 - Use nouns for Resource
 - Define a Consistent approach
     
+
+Microservices
+- "Small autonomous services that work together"
+- Small deployable units
+- Cloud enable (Optional)
+    - Could have more than one instance for each one of them.
+    - High availability
+
+Microservices with Spring Cloud
