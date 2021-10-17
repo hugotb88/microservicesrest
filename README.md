@@ -121,3 +121,12 @@ Post Table have a reference to User table with the id, but User table doesn't ha
 
 - In Post Class added @JsonIgnore to user object
   - Because i don't want the details of the user when i get a specific post, not adding this could generate an infinite loop
+    
+
+Richardson Maturity Model (RMM)
+- To evaluate/grade your RESTful API
+- 4 stages, 3 Different Levels of Maturity (Level 0, Level 1, Level 2, Level 3)
+    - Level 0: "Expose SOAP WEB Services in REST Style" --> Expose the URLs (e.g. http://server/getPosts,http://server/deletePosts...)
+    - Level 1: "Expose Resources with proper URI" --> Group endpoints in resources (Users (/users), Posts (/posts)...)
+    - Level 2: Level 1 + "Http Methods " --> Use proper HTTP method in a group of resources (GET, POST, PUT, DELETE, OPTIONAL)
+    - Level 3: Level 2 + HATEOAS DATA + Next Possible Actions --> With HATEOAS we return what are the next possible actions after perform an action.
