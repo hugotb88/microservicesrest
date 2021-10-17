@@ -3,13 +3,17 @@ package com.mastermicroservices.rest.webservices.microservicesrest.pojos;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Victor Hugo Olvera Cruz
  * POJO User
+ * A @User can have multiple @Post, a @Post can only have one @User
+ * * (One to Many)
  */
 @Entity
 public class User {
@@ -25,9 +29,12 @@ public class User {
     @Past
     private LocalDate birthDate;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
     //Contructors
-    protected User(){}
+    protected User() {
+    }
 
     public User(Integer id, String name, LocalDate birthDate) {
         super();
@@ -59,4 +66,14 @@ public class User {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+
 }

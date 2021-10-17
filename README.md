@@ -103,3 +103,18 @@ spring.h2.console.enabled = true
 
 localhost:8080/h2-console
 jdbc:h2:mem:testdb
+
+
+Tips for JPA Code
+- When you create a relationship (@OneToMany,@OneToOne...) 
+    - Example: "One User can have multiple Posts, but a Post is only from one User"
+    - That Means @ManyToOne in Post class and @OneToMany in User class, but the owner of the relationship is Post
+    - Then in User, you need to specify who is the Owner to not create the Relationship twice
+    - You can do that in User using the keyword @OneToMany(mappedBy = "user") --> user is the name of the field in Post class that owns the relationship.
+
+
+From IntelliJ console:
+Hibernate: create table post (id integer not null, description varchar(255), user_id integer, primary key (id))
+Hibernate: create table user (id integer not null, birth_date date, name varchar(255), primary key (id))
+
+Post Table have a reference to User table with the id, but User table doesn't have a reference to Post Table, that's ok
