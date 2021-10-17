@@ -130,3 +130,20 @@ Richardson Maturity Model (RMM)
     - Level 1: "Expose Resources with proper URI" --> Group endpoints in resources (Users (/users), Posts (/posts)...)
     - Level 2: Level 1 + "Http Methods " --> Use proper HTTP method in a group of resources (GET, POST, PUT, DELETE, OPTIONAL)
     - Level 3: Level 2 + HATEOAS DATA + Next Possible Actions --> With HATEOAS we return what are the next possible actions after perform an action.
+    
+
+Best Practices in RESTful services design
+- Consumer First
+    - Simple name are better
+    - Document your API, think in the Consumer of your API
+- Make Best use of HTTP
+    - Request Methods (GET, POST, PUT, DELETE)
+    - Responses (1xx - Info , 2xx - Succcessful, 3xx - Redirection, 4xx - Cient Error, 5xx - Server Error)
+- No secure info in the URI (Uniform Resource Identifier)
+- Always use plurals 
+    - /users instead of /user
+        /users/1 instead of /user/1
+    - /posts instead of /post
+- Use nouns for Resource
+- Define a Consistent approach
+    
