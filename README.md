@@ -95,4 +95,11 @@ JPA
 e.g
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.jpa.defer-datasource-initialization=true
-    
+
+
+To enable h2 console and perform queries on it.
+spring.jpa.show-sql = true
+spring.h2.console.enabled = true
+
+localhost:8080/h2-console
+jdbc:h2:mem:testdb
