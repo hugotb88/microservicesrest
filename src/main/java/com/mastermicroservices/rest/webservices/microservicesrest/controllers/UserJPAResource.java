@@ -1,11 +1,11 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 
+import com.mastermicroservices.rest.webservices.microservicesrest.daos.PostRepository;
 import com.mastermicroservices.rest.webservices.microservicesrest.daos.UserRepository;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserNotFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserSaveException;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.Post;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
-import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -26,6 +26,9 @@ public class UserJPAResource {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PostRepository postRepository;
 
     //Get all the Users
     @GetMapping("/jpa/users")
@@ -86,5 +89,29 @@ public class UserJPAResource {
         return userOptional.get().getPosts();
     }
 
+    //Create Post for Specific User
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<Object> createPostForUser(@PathVariable Integer id, @RequestBody Post post){
+        //Find the User
+        Optional<User> userOptional = userRepository.findById(id);
 
+        if (!userOptional.isPresent())
+            throw new UserNotFoundException("User " + id + " not found:");
+
+        //Extract the user
+        User user = userOptional.get();
+
+        //Map the user to the post
+        post.setUser(user);
+
+        //Save the Post
+        postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(post.getId()).toUri(); //Appends in the URI the id of the new User
+
+        return ResponseEntity.created(location).build();
+    }
 }
