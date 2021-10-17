@@ -118,3 +118,6 @@ Hibernate: create table post (id integer not null, description varchar(255), use
 Hibernate: create table user (id integer not null, birth_date date, name varchar(255), primary key (id))
 
 Post Table have a reference to User table with the id, but User table doesn't have a reference to Post Table, that's ok
+
+- In Post Class added @JsonIgnore to user object
+  - Because i don't want the details of the user when i get a specific post, not adding this could generate an infinite loop

@@ -3,6 +3,7 @@ package com.mastermicroservices.rest.webservices.microservicesrest.controllers;
 import com.mastermicroservices.rest.webservices.microservicesrest.daos.UserRepository;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserNotFoundException;
 import com.mastermicroservices.rest.webservices.microservicesrest.exception.UserSaveException;
+import com.mastermicroservices.rest.webservices.microservicesrest.pojos.Post;
 import com.mastermicroservices.rest.webservices.microservicesrest.pojos.User;
 import com.mastermicroservices.rest.webservices.microservicesrest.services.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +71,20 @@ public class UserJPAResource {
     public void deleteUser(@PathVariable Integer id){
         userRepository.deleteById(id);
     }
+
+
+    //Retrieve all the Posts for a specific User
+    @GetMapping("/jpa/users/{id}/posts")
+    public List<Post> retrieveUserPosts(@PathVariable Integer id){
+        //Find the User
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if(!userOptional.isPresent()){
+            throw new UserNotFoundException("Id: " + id);
+        }
+
+        return userOptional.get().getPosts();
+    }
+
 
 }

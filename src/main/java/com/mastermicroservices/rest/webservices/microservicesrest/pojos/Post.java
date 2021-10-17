@@ -1,5 +1,7 @@
 package com.mastermicroservices.rest.webservices.microservicesrest.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -17,6 +19,7 @@ public class Post {
     private String description;
 
     @ManyToOne(fetch= FetchType.LAZY)
+    @JsonIgnore //Because i don't want the details of the user when i get a specific post, not adding this could generate an infinite loop
     private User user;
 
     public Integer getId() {
