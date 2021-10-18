@@ -211,3 +211,15 @@ For "Visibility and Monitoring"
 
 For "Fault Tolerance"
     - Hystrix, if a service is down, Hystrix can provide a default Response.
+
+
+Advantages of Microservices.
+    - Flexibility to use different technologies in each one of te Microservices
+        - Microservice 1 in Java
+        - Microservice 2 in NodeJS
+        - Microservice 3 in Kotlin
+        - Microservice 1 in another language.
+    - Dynamic Scaling
+        - If your application has a season with a lot of traffic (e.g. Amazon in Christmas)
+        - You can Scale Up or Scale Down based on the load
+    -  Faster Release Cycles.
