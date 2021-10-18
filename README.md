@@ -138,7 +138,7 @@ Best Practices in RESTful services design
     - Document your API, think in the Consumer of your API
 - Make Best use of HTTP
     - Request Methods (GET, POST, PUT, DELETE)
-    - Responses (1xx - Info , 2xx - Succcessful, 3xx - Redirection, 4xx - Cient Error, 5xx - Server Error)
+    - Responses (1xx - Info , 2xx - Successful, 3xx - Redirection, 4xx - Client Error, 5xx - Server Error)
 - No secure info in the URI (Uniform Resource Identifier)
 - Always use plurals 
     - /users instead of /user
@@ -168,3 +168,46 @@ Microservices
         - A Service calling another service could be like a pack of cards, one over the other and then, if an important one falls, all the app is broken, failure tolerance.
 
 Microservices with Spring Cloud
+
+- Provides solutions to the challenges above.
+- Different tools to quickly build some of the common patterns in distributed systems
+- Spring Cloud contains more than one project related to the Cloud
+    - Spring Cloud Netflix
+        - Eureka
+        - Hystrix
+        - Zuul
+    
+    - Version used Finchley M2
+
+- SpringCloudConfigServer
+    - Centralize the configuration for all the microservices and expose it
+    - Easy to maintain
+    
+
+For "Dynamic Scale Up and Scale Down"
+    - Naming Server (Eureka)
+    - Ribbon (Client Side Load Balancing)
+    - Feign (Easier REST Clients)
+
+
+
+Example: 
+
+- We have a service called "CurrencyCalculationService" that talks with the CurrencyExchangeService.
+- We have three instances of CurrencyExchangeService (CurrencyExchangeService1, CurrencyExchangeService2, CurrencyExchangeServic3).
+- We register all the services in the Naming Server (Eureka)
+    - Register all microservices
+    - Discovery of Services
+- Then, the CurrencyCalculationService says to the Naming Server "Hey, give me the current instances of "CurrencyExchangeService"
+- The Naming Server provides the three instances, Ribbon provides the load balancing
+
+
+For "Visibility and Monitoring"
+    - Zipkin Distributed Tracing
+        - If a request has an ID, we can trace that request across multiple components using Zipkin
+    - Netflix API Gateway
+        - The microservices have a lot of common features... security, login, analytics...etc
+        - Instead if implement them in each of the services, we can use Zuul API Gateway to do it.
+
+For "Fault Tolerance"
+    - Hystrix, if a service is down, Hystrix can provide a default Response.
