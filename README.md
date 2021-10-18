@@ -154,5 +154,17 @@ Microservices
 - Cloud enable (Optional)
     - Could have more than one instance for each one of them.
     - High availability
+    
+- Challenges
+    - Stablish boundaries for each microservice
+        - Probably you won't get that the first time you define one,
+    - Configuration Management
+        - 10 Microservices in 5 environments means 50 Microservices (A lot of support work)
+    -  Dynamic Scale up and Scale Down (Dynamic load balance)
+        - The load of work in the different services could change over the time, you could need 4 instances of a microservice to balance the load of work
+    - Visibility
+        - How to identify a bug?, we need to be able to indentify a down service, monitoring activity and logs.
+    - Pack of Cards
+        - A Service calling another service could be like a pack of cards, one over the other and then, if an important one falls, all the app is broken, failure tolerance.
 
 Microservices with Spring Cloud
