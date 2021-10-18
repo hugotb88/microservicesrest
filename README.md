@@ -186,7 +186,9 @@ Microservices with Spring Cloud
 
 For "Dynamic Scale Up and Scale Down"
     - Naming Server (Eureka)
-    - Ribbon (Client Side Load Balancing)
+    - Load Balancer
+        - Ribbon for V2.3.0 or Earlier of Spring Boot (Client Side Load Balancing)
+        - Spring Cloud LoadBalancer is the latest 
     - Feign (Easier REST Clients)
 
 
@@ -208,9 +210,11 @@ For "Visibility and Monitoring"
     - Netflix API Gateway
         - The microservices have a lot of common features... security, login, analytics...etc
         - Instead if implement them in each of the services, we can use Zuul API Gateway to do it.
+            - Spring Cloud Gateway instead of Zuul for Spring Boot 2.4.0 or newer
 
 For "Fault Tolerance"
     - Hystrix, if a service is down, Hystrix can provide a default Response.
+        - Resilience4j instead of Hystrix for Spring Boot 2.4.0 or newer
 
 
 Advantages of Microservices.
@@ -223,3 +227,14 @@ Advantages of Microservices.
         - If your application has a season with a lot of traffic (e.g. Amazon in Christmas)
         - You can Scale Up or Scale Down based on the load
     -  Faster Release Cycles.
+
+
+Docker "Contenarize Microservices"
+    - Run microservices using Docker and Docker Compose
+
+Kubernetes
+    - Orchestrate all the Microservices with Kubernetes.
+
+
+Material from Udemy Course for the Spring Cloud part
+https://github.com/in28minutes/course-material/blob/main/01-spring-microservices/v2/downloads.md
