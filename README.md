@@ -238,3 +238,23 @@ Kubernetes
 
 Material from Udemy Course for the Spring Cloud part
 https://github.com/in28minutes/course-material/blob/main/01-spring-microservices/v2/downloads.md
+
+
+
+************* MICROSERVICES PART **************
+limits-service 
+Is a microservice created appart from this project and is a complement of this one.
+ - https://github.com/hugotb88/limits-service
+ - Version 2.5.6
+ - Spring Web
+ - Spring Boot Dev Tools
+ - Spring Boot Actuator
+ - Spring Cloud Config  (Config Client)
+
+
+spring-cloud-config-server project
+Spring Config Server
+ - https://github.com/hugotb88/spring-cloud.config-server
+ - Version 2.5.6
+ - Spring DevTools
+ - Spring Config Server
