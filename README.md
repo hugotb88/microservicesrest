@@ -266,4 +266,17 @@ IS a microservice created using Spring Initialzr for currency exchange
 - DevTools
 - Actuator
 - Web
-- Config Server                                                 
+- Config Server 
+
+URL
+http://localhost:8000/currency-exchange/from/USD/to/INR
+
+
+Response Structure
+{
+    "id":10001,
+    "from":"USD",
+    "to":"INR",
+    "conversionMultiple":65.00,
+    "environment":"8000 instance-id"
+}
