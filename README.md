@@ -258,3 +258,12 @@ Spring Config Server
  - Version 2.5.6
  - Spring DevTools
  - Spring Config Server
+
+currency-exchange-service project
+IS a microservice created using Spring Initialzr for currency exchange 
+- https://github.com/hugotb88/currency-exchange-service
+- Version 2.5.6
+- DevTools
+- Actuator
+- Web
+- Config Server                                                 
