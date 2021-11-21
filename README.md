@@ -280,3 +280,9 @@ Response Structure
     "conversionMultiple":65.00,
     "environment":"8000 instance-id"
 }
+
+# Spring Cloud Gateway to use the same common configuration between microservices
+- In a typical Microservices architecture there are a lot of microservices (hundreds, thousands)
+- A lot of them share common configurations
+- Spring Cloud API Gateway does that work for you
+    - In Earlier versions of Spring was called Zuul
