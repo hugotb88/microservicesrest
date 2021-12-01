@@ -349,3 +349,46 @@ Then...
 - ¿How you can trace a request tha travels across a lot of Microservices?
   - Using Distributed Tracing 
 ![img.png](img.png)
+
+# Setting up Zipkin Server with Docker
+``docker run -p 9411:9411 openzipkin/zipkin:2.23``
+- That will pull or run that specific image of Zipkin Server in a Docker container.
+- Go to ``http://localhost:9411/zipkin/`` the server will be up and running.
+
+- Configure in the project the following dependencies:
+```
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+```
+
+This library helps to assign an id per request
+
+```
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+    </dependency>
+```
+
+This one adds Zipkin
+
+```
+  <dependency>
+    <groupId>org.springframework.amqp</groupId>
+    <artifactId>spring-rabbit</artifactId>
+  </dependency>
+```
+
+Optional, this is for the AMQP and RabbitMQ and keep the requests in the queue, in this way if the Zipkin server is down, we are not loosing the information of the requests.
+![img_2.png](img_2.png)
+
+# Configuring Sampling
+This allows to analyze a percentage of the requests as sampling
+
+in properties file
+``spring.sleuth.sampler.probability = 1.0``
+
+
+![img_3.png](img_3.png)
